@@ -61,7 +61,7 @@
                 <nav id="sub-nav">
                     <div class="profile" id="profile-nav">
                         <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/avatar.png" />
+                            <img class="avatar" src="/css/images/juni.png" />
                             <i class="fa fa-caret-down"></i>
                         </a>
                     </div>
@@ -139,9 +139,9 @@
 <aside id="profile">
     <div class="inner profile-inner">
         <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/avatar.png" />
-            <h2 id="name">PPOffice</h2>
-            <h3 id="title">Web Developer &amp; Designer</h3>
+            <img id="avatar" src="/css/images/juni.png" />
+            <h2 id="name">Huimori</h2>
+            <h3 id="title">Web Developer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Seoul, Korea</span>
             <a id="follow" target="_blank" href="https://github.com/juniweb/">팔로우</a>
         </div>
@@ -274,12 +274,36 @@ cd ../..
 <pre><code>export PORT=3000
 export ROOT_URL=http://your-host-name.com-as-accessed-from-internet:3000/
 export MONGO_URL=mongodb://localhost:27017/rocketchat
-</code></pre><h3 id="Step-5-MongoDB-시작"><a href="#Step-5-MongoDB-시작" class="headerlink" title="Step 5: MongoDB 시작"></a>Step 5: MongoDB 시작</h3><pre><code>chkconfig mongod on
+</code></pre><blockquote>
+<p><strong>ROOT_URL</strong> 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 를 로 변경하여 사용.</p>
+</blockquote>
+<h3 id="Step-5-MongoDB-시작"><a href="#Step-5-MongoDB-시작" class="headerlink" title="Step 5: MongoDB 시작"></a>Step 5: MongoDB 시작</h3><pre><code>chkconfig mongod on
 </code></pre><p>MongoDB를 시작</p>
 <pre><code>systemctl start mongod
 </code></pre><h3 id="Step-6-Rocket-Chat-서비스-시작"><a href="#Step-6-Rocket-Chat-서비스-시작" class="headerlink" title="Step 6: Rocket.Chat 서비스 시작"></a>Step 6: Rocket.Chat 서비스 시작</h3><pre><code>node main.js
 </code></pre><p>웹브라우저에서 Rocket.Chat 에 접속한다.</p>
 <pre><code>http://your-host-name.com-as-accessed-from-internet:3000/
+</code></pre><h3 id="Step-7-Rocket-Chat-서비스-등록-자동시작"><a href="#Step-7-Rocket-Chat-서비스-등록-자동시작" class="headerlink" title="Step 7: Rocket.Chat 서비스 등록(자동시작)"></a>Step 7: Rocket.Chat 서비스 등록(자동시작)</h3><p>systemd 에 RocketChat 서비스 설정</p>
+<p><a href="https://www.conory.com/note_linux/42241" target="_blank" rel="external">systemd에서 부팅시 실행할 서비스 관리하기 (CentOS 7)</a></p>
+<pre><code>vi /usr/lib/systemd/system/rocketchat.service
+</code></pre><p>파일에 다음 내용을 입력합니다.</p>
+<pre><code>[Unit]
+Description=The Rocket.Chat server
+After=network.target remote-fs.target nss-lookup.target nginx.target mongod.target
+[Service]
+ExecStart=/usr/local/bin/node /opt/Rocket.Chat/main.js
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=rocketchat
+User=root
+Environment=MONGO_URL=mongodb://localhost:27017/rocketchat ROOT_URL=http://your-host-name.com-as-accessed-from-internet:3000/ PORT=3000
+[Install]
+WantedBy=multi-user.target
+</code></pre><blockquote>
+<p><strong>ROOT_URL</strong> 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 로 변경하여 사용</p>
+</blockquote>
+<p>RocketChat 서비스 활성화</p>
+<pre><code>systemctl enable rocketchat.service
 </code></pre><h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><p><a href="https://rocket.chat/docs/installation/manual-installation/centos/" target="_blank" rel="external">Deploying Rocket.Chat on Centos 7</a></p>
 <p><a href="https://www.vultr.com/docs/how-to-install-rocket-chat-on-centos-7" target="_blank" rel="external">How to Install Rocket.Chat on CentOS 7</a></p>
 
@@ -292,7 +316,7 @@ export MONGO_URL=mongodb://localhost:27017/rocketchat
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuthqq7i00056kyvjn1mqzw6" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuxcqy050001dkyvmayqgrbz" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -460,7 +484,7 @@ export MONGO_URL=mongodb://localhost:27017/rocketchat
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuthqq7f00046kyvpgtrnswm" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuxcqy0t0004dkyvuwhu82ev" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -632,7 +656,7 @@ export MONGO_URL=mongodb://localhost:27017/rocketchat
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuthqq7300016kyvc7ba8oku" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuxcqy130007dkyvmcnpwyu1" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -764,7 +788,7 @@ export MONGO_URL=mongodb://localhost:27017/rocketchat
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/09/" data-id="ciuthqq6v00006kyvj1g2pg4z" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/09/" data-id="ciuxcqxzx0000dkyvp2319udz" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -894,7 +918,7 @@ export MONGO_URL=mongodb://localhost:27017/rocketchat
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/07/" data-id="ciuthqq7s00076kyv0kmjclzf" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/07/" data-id="ciuxcqy0w0005dkyvfwnszbze" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
