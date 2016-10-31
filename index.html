@@ -236,75 +236,25 @@
 <li>2 GB RAM</li>
 <li>40 GB of SSD</li>
 </ul>
-<h3 id="Step-1-서버-Update"><a href="#Step-1-서버-Update" class="headerlink" title="Step 1: 서버 Update"></a>Step 1: 서버 Update</h3><p>Root 로 로그인한다.</p>
-<pre><code>sudo su -
-</code></pre><p>epel repository 를 추가하고, 시스템을 Update 한다.</p>
-<pre><code>yum -y install epel-release &amp;&amp; yum -y update
-</code></pre><h3 id="Step-2-MongoDB-설치"><a href="#Step-2-MongoDB-설치" class="headerlink" title="Step 2: MongoDB 설치"></a>Step 2: MongoDB 설치</h3><p>MongoDB YUM repository 를 추가합니다.</p>
-<pre><code>vi /etc/yum.repos.d/mongodb.repo
-</code></pre><p>파일에 다음 내용을 입력합니다.</p>
-<pre><code>[mongodb]
-name=MongoDB Repository
-baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/
-gpgcheck=0
-enabled=1
-</code></pre><p>파일을 저장하고 vi를 종료합니다.</p>
-<pre><code>:wq!
-</code></pre><p>MonogoDB 를 설치합니다.</p>
-<pre><code>yum install mongodb-org mongodb-org-server -y
-</code></pre><h3 id="Step-3-Node-js-GraphicsMagick-npm-과-dependencies-설치"><a href="#Step-3-Node-js-GraphicsMagick-npm-과-dependencies-설치" class="headerlink" title="Step 3: Node.js, GraphicsMagick, npm 과 dependencies 설치"></a>Step 3: Node.js, GraphicsMagick, npm 과 dependencies 설치</h3><p>node.js 와 npm 등을 설치한다.</p>
-<pre><code>yum install -y nodejs curl GraphicsMagick npm gcc-c++
-</code></pre><p>node.js 와 npm 이 설치되었으므로, dependencies 를 설치한다.</p>
-<pre><code>npm install -g inherits n
-</code></pre><p>Rocket.Chat 에서 필요한 node.js 4.5 버전을 설치한다.</p>
+<h3 id="Step-1-서버-Update"><a href="#Step-1-서버-Update" class="headerlink" title="Step 1: 서버 Update"></a>Step 1: 서버 Update</h3><p>Root 로 로그인합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo su -</div></pre></td></tr></table></figure></p>
+<p>epel repository 를 추가하고, 시스템을 Update 합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install epel-release &amp;&amp; yum -y update</div></pre></td></tr></table></figure></p>
+<h3 id="Step-2-MongoDB-설치"><a href="#Step-2-MongoDB-설치" class="headerlink" title="Step 2: MongoDB 설치"></a>Step 2: MongoDB 설치</h3><p>MongoDB YUM repository 를 추가합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/yum.repos.d/mongodb.repo</div></pre></td></tr></table></figure></p>
+<p>파일에 다음 내용을 입력합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[mongodb]</div><div class="line">name=MongoDB Repository</div><div class="line">baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div></pre></td></tr></table></figure></p>
+<p>파일을 저장하고 vi를 종료합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:wq!</div></pre></td></tr></table></figure></p>
+<p>MonogoDB 를 설치합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mongodb-org mongodb-org-server -y</div></pre></td></tr></table></figure></p>
+<h3 id="Step-3-Node-js-GraphicsMagick-npm-과-dependencies-설치"><a href="#Step-3-Node-js-GraphicsMagick-npm-과-dependencies-설치" class="headerlink" title="Step 3: Node.js, GraphicsMagick, npm 과 dependencies 설치"></a>Step 3: Node.js, GraphicsMagick, npm 과 dependencies 설치</h3><p>node.js 와 npm 등을 설치합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y nodejs curl GraphicsMagick npm gcc-c++</div></pre></td></tr></table></figure></p>
+<p>node.js 와 npm 이 설치되었으므로, dependencies 를 설치합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g inherits n</div></pre></td></tr></table></figure></p>
+<p>Rocket.Chat 에서 필요한 node.js 4.5 버전을 설치합니다.</p>
 <pre><code>n 4.5
-</code></pre><h3 id="Step-4-Rocket-설치"><a href="#Step-4-Rocket-설치" class="headerlink" title="Step 4: Rocket 설치"></a>Step 4: Rocket 설치</h3><p>Rocket.Chat 을 다운로드하고 설치한다.</p>
-<pre><code>cd /opt
-
-curl -L https://rocket.chat/releases/latest/download -o rocket.chat.tgz
-tar zxvf rocket.chat.tgz
-
-mv bundle Rocket.Chat
-cd Rocket.Chat/programs/server
-
-npm install
-
-cd ../..
-</code></pre><p>PORT, ROOT_URL 및 MONGO_URL 을 설정한다.</p>
-<pre><code>export PORT=3000
-export ROOT_URL=http://your-host-name.com-as-accessed-from-internet:3000/
-export MONGO_URL=mongodb://localhost:27017/rocketchat
-</code></pre><blockquote>
-<p><strong>ROOT_URL</strong> 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 를 로 변경하여 사용.</p>
-</blockquote>
-<h3 id="Step-5-MongoDB-시작"><a href="#Step-5-MongoDB-시작" class="headerlink" title="Step 5: MongoDB 시작"></a>Step 5: MongoDB 시작</h3><pre><code>chkconfig mongod on
-</code></pre><p>MongoDB를 시작</p>
-<pre><code>systemctl start mongod
-</code></pre><h3 id="Step-6-Rocket-Chat-서비스-시작"><a href="#Step-6-Rocket-Chat-서비스-시작" class="headerlink" title="Step 6: Rocket.Chat 서비스 시작"></a>Step 6: Rocket.Chat 서비스 시작</h3><pre><code>node main.js
-</code></pre><p>웹브라우저에서 Rocket.Chat 에 접속한다.</p>
-<pre><code>http://your-host-name.com-as-accessed-from-internet:3000/
-</code></pre><h3 id="Step-7-Rocket-Chat-서비스-등록-자동시작"><a href="#Step-7-Rocket-Chat-서비스-등록-자동시작" class="headerlink" title="Step 7: Rocket.Chat 서비스 등록(자동시작)"></a>Step 7: Rocket.Chat 서비스 등록(자동시작)</h3><p>systemd 에 RocketChat 서비스 설정</p>
-<p><a href="https://www.conory.com/note_linux/42241" target="_blank" rel="external">systemd에서 부팅시 실행할 서비스 관리하기 (CentOS 7)</a></p>
-<pre><code>vi /usr/lib/systemd/system/rocketchat.service
-</code></pre><p>파일에 다음 내용을 입력합니다.</p>
-<pre><code>[Unit]
-Description=The Rocket.Chat server
-After=network.target remote-fs.target nss-lookup.target nginx.target mongod.target
-[Service]
-ExecStart=/usr/local/bin/node /opt/Rocket.Chat/main.js
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=rocketchat
-User=root
-Environment=MONGO_URL=mongodb://localhost:27017/rocketchat ROOT_URL=http://your-host-name.com-as-accessed-from-internet:3000/ PORT=3000
-[Install]
-WantedBy=multi-user.target
-</code></pre><blockquote>
-<p><strong>ROOT_URL</strong> 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 로 변경하여 사용</p>
-</blockquote>
-<p>RocketChat 서비스 활성화</p>
-<pre><code>systemctl enable rocketchat.service
-</code></pre><h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><p><a href="https://rocket.chat/docs/installation/manual-installation/centos/" target="_blank" rel="external">Deploying Rocket.Chat on Centos 7</a></p>
+</code></pre><h3 id="Step-4-Rocket-설치"><a href="#Step-4-Rocket-설치" class="headerlink" title="Step 4: Rocket 설치"></a>Step 4: Rocket 설치</h3><p>Rocket.Chat 을 다운로드하고 설치합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">cd /opt</div><div class="line"></div><div class="line">curl -L https://rocket.chat/releases/latest/download -o rocket.chat.tgz</div><div class="line">tar zxvf rocket.chat.tgz</div><div class="line"></div><div class="line">mv bundle Rocket.Chat</div><div class="line">cd Rocket.Chat/programs/server</div><div class="line"></div><div class="line">npm install</div><div class="line"></div><div class="line">cd ../..</div><div class="line">``` </div><div class="line"></div><div class="line">PORT, ROOT_URL 및 MONGO_URL 을 설정합니다.</div></pre></td></tr></table></figure></p>
+<p>export PORT=3000<br>export ROOT_URL=<a href="http://your-host-name.com-as-accessed-from-internet:3000/" target="_blank" rel="external">http://your-host-name.com-as-accessed-from-internet:3000/</a><br>export MONGO_URL=mongodb://localhost:27017/rocketchat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; **ROOT_URL** 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 를 로 변경하여 사용.</div><div class="line"></div><div class="line">### Step 5: MongoDB 시작</div></pre></td></tr></table></figure></p>
+<p>chkconfig mongod on<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MongoDB를 시작합니다.</div></pre></td></tr></table></figure></p>
+<p>systemctl start mongod<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### Step 6: Rocket.Chat 서비스 시작</div></pre></td></tr></table></figure></p>
+<p>node main.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">웹브라우저에서 Rocket.Chat 에 접속합니다.</div><div class="line"></div><div class="line">	http://your-host-name.com-as-accessed-from-internet:3000/</div><div class="line"></div><div class="line"></div><div class="line">### Step 7: Rocket.Chat 서비스 등록(자동시작)</div><div class="line"></div><div class="line">systemd 에 RocketChat 서비스 설정</div><div class="line"></div><div class="line">[systemd에서 부팅시 실행할 서비스 관리하기 (CentOS 7)](https://www.conory.com/note_linux/42241)</div></pre></td></tr></table></figure></p>
+<p>vi /usr/lib/systemd/system/rocketchat.service<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">파일에 다음 내용을 입력합니다.</div></pre></td></tr></table></figure></p>
+<p>[Unit]<br>Description=The Rocket.Chat server<br>After=network.target remote-fs.target nss-lookup.target nginx.target mongod.target<br>[Service]<br>ExecStart=/usr/local/bin/node /opt/Rocket.Chat/main.js<br>StandardOutput=syslog<br>StandardError=syslog<br>SyslogIdentifier=rocketchat<br>User=root<br>Environment=MONGO_URL=mongodb://localhost:27017/rocketchat ROOT_URL=<a href="http://your-host-name.com-as-accessed-from-internet:3000/" target="_blank" rel="external">http://your-host-name.com-as-accessed-from-internet:3000/</a> PORT=3000<br>[Install]<br>WantedBy=multi-user.target<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; **ROOT_URL** 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 로 변경하여 사용</div><div class="line"></div><div class="line">RocketChat 서비스 활성화</div></pre></td></tr></table></figure></p>
+<p>systemctl enable rocketchat.service<br>```</p>
+<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><p><a href="https://rocket.chat/docs/installation/manual-installation/centos/" target="_blank" rel="external">Deploying Rocket.Chat on Centos 7</a></p>
 <p><a href="https://www.vultr.com/docs/how-to-install-rocket-chat-on-centos-7" target="_blank" rel="external">How to Install Rocket.Chat on CentOS 7</a></p>
 
         
