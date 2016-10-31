@@ -246,14 +246,24 @@
 <p>node.js 와 npm 이 설치되었으므로, dependencies 를 설치합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g inherits n</div></pre></td></tr></table></figure></p>
 <p>Rocket.Chat 에서 필요한 node.js 4.5 버전을 설치합니다.</p>
 <pre><code>n 4.5
-</code></pre><h3 id="Step-4-Rocket-설치"><a href="#Step-4-Rocket-설치" class="headerlink" title="Step 4: Rocket 설치"></a>Step 4: Rocket 설치</h3><p>Rocket.Chat 을 다운로드하고 설치합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">cd /opt</div><div class="line"></div><div class="line">curl -L https://rocket.chat/releases/latest/download -o rocket.chat.tgz</div><div class="line">tar zxvf rocket.chat.tgz</div><div class="line"></div><div class="line">mv bundle Rocket.Chat</div><div class="line">cd Rocket.Chat/programs/server</div><div class="line"></div><div class="line">npm install</div><div class="line"></div><div class="line">cd ../..</div><div class="line">``` </div><div class="line"></div><div class="line">PORT, ROOT_URL 및 MONGO_URL 을 설정합니다.</div></pre></td></tr></table></figure></p>
-<p>export PORT=3000<br>export ROOT_URL=<a href="http://your-host-name.com-as-accessed-from-internet:3000/" target="_blank" rel="external">http://your-host-name.com-as-accessed-from-internet:3000/</a><br>export MONGO_URL=mongodb://localhost:27017/rocketchat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; **ROOT_URL** 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 를 로 변경하여 사용.</div><div class="line"></div><div class="line">### Step 5: MongoDB 시작</div></pre></td></tr></table></figure></p>
-<p>chkconfig mongod on<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MongoDB를 시작합니다.</div></pre></td></tr></table></figure></p>
-<p>systemctl start mongod<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### Step 6: Rocket.Chat 서비스 시작</div></pre></td></tr></table></figure></p>
-<p>node main.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">웹브라우저에서 Rocket.Chat 에 접속합니다.</div><div class="line"></div><div class="line">	http://your-host-name.com-as-accessed-from-internet:3000/</div><div class="line"></div><div class="line"></div><div class="line">### Step 7: Rocket.Chat 서비스 등록(자동시작)</div><div class="line"></div><div class="line">systemd 에 RocketChat 서비스 설정</div><div class="line"></div><div class="line">[systemd에서 부팅시 실행할 서비스 관리하기 (CentOS 7)](https://www.conory.com/note_linux/42241)</div></pre></td></tr></table></figure></p>
-<p>vi /usr/lib/systemd/system/rocketchat.service<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">파일에 다음 내용을 입력합니다.</div></pre></td></tr></table></figure></p>
-<p>[Unit]<br>Description=The Rocket.Chat server<br>After=network.target remote-fs.target nss-lookup.target nginx.target mongod.target<br>[Service]<br>ExecStart=/usr/local/bin/node /opt/Rocket.Chat/main.js<br>StandardOutput=syslog<br>StandardError=syslog<br>SyslogIdentifier=rocketchat<br>User=root<br>Environment=MONGO_URL=mongodb://localhost:27017/rocketchat ROOT_URL=<a href="http://your-host-name.com-as-accessed-from-internet:3000/" target="_blank" rel="external">http://your-host-name.com-as-accessed-from-internet:3000/</a> PORT=3000<br>[Install]<br>WantedBy=multi-user.target<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; **ROOT_URL** 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 로 변경하여 사용</div><div class="line"></div><div class="line">RocketChat 서비스 활성화</div></pre></td></tr></table></figure></p>
-<p>systemctl enable rocketchat.service<br>```</p>
+</code></pre><h3 id="Step-4-Rocket-설치"><a href="#Step-4-Rocket-설치" class="headerlink" title="Step 4: Rocket 설치"></a>Step 4: Rocket 설치</h3><p>Rocket.Chat 을 다운로드하고 설치합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cd /opt</div><div class="line"></div><div class="line">curl -L https://rocket.chat/releases/latest/download -o rocket.chat.tgz</div><div class="line">tar zxvf rocket.chat.tgz</div><div class="line"></div><div class="line">mv bundle Rocket.Chat</div><div class="line">cd Rocket.Chat/programs/server</div><div class="line"></div><div class="line">npm install</div><div class="line"></div><div class="line">cd ../..</div></pre></td></tr></table></figure></p>
+<p>PORT, ROOT_URL 및 MONGO_URL 을 설정합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export PORT=3000</div><div class="line">export ROOT_URL=http://your-host-name.com-as-accessed-from-internet:3000/</div><div class="line">export MONGO_URL=mongodb://localhost:27017/rocketchat</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>ROOT_URL</strong> 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 를 로 변경하여 사용.</p>
+</blockquote>
+<h3 id="Step-5-MongoDB-시작"><a href="#Step-5-MongoDB-시작" class="headerlink" title="Step 5: MongoDB 시작"></a>Step 5: MongoDB 시작</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chkconfig mongod on</div></pre></td></tr></table></figure>
+<p>MongoDB를 시작합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl start mongod</div></pre></td></tr></table></figure></p>
+<h3 id="Step-6-Rocket-Chat-서비스-시작"><a href="#Step-6-Rocket-Chat-서비스-시작" class="headerlink" title="Step 6: Rocket.Chat 서비스 시작"></a>Step 6: Rocket.Chat 서비스 시작</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node main.js</div></pre></td></tr></table></figure>
+<p>웹브라우저에서 Rocket.Chat 에 접속합니다.</p>
+<pre><code>http://your-host-name.com-as-accessed-from-internet:3000/
+</code></pre><h3 id="Step-7-Rocket-Chat-서비스-등록-자동시작"><a href="#Step-7-Rocket-Chat-서비스-등록-자동시작" class="headerlink" title="Step 7: Rocket.Chat 서비스 등록(자동시작)"></a>Step 7: Rocket.Chat 서비스 등록(자동시작)</h3><p>systemd 에 RocketChat 서비스 설정</p>
+<p><a href="https://www.conory.com/note_linux/42241" target="_blank" rel="external">systemd에서 부팅시 실행할 서비스 관리하기 (CentOS 7)</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /usr/lib/systemd/system/rocketchat.service</div></pre></td></tr></table></figure></p>
+<p>파일에 다음 내용을 입력합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[Unit]</div><div class="line">Description=The Rocket.Chat server</div><div class="line">After=network.target remote-fs.target nss-lookup.target nginx.target mongod.target</div><div class="line">[Service]</div><div class="line">ExecStart=/usr/local/bin/node /opt/Rocket.Chat/main.js</div><div class="line">StandardOutput=syslog</div><div class="line">StandardError=syslog</div><div class="line">SyslogIdentifier=rocketchat</div><div class="line">User=root</div><div class="line">Environment=MONGO_URL=mongodb://localhost:27017/rocketchat ROOT_URL=http://your-host-name.com-as-accessed-from-internet:3000/ PORT=3000</div><div class="line">[Install]</div><div class="line">WantedBy=multi-user.target</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>ROOT_URL</strong> 에서 your-host-name.com-as-accessed-from-internet 는 DNS 이름 또는 IP 로 변경하여 사용</p>
+</blockquote>
+<p>RocketChat 서비스 활성화<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl enable rocketchat.service</div></pre></td></tr></table></figure></p>
 <h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><p><a href="https://rocket.chat/docs/installation/manual-installation/centos/" target="_blank" rel="external">Deploying Rocket.Chat on Centos 7</a></p>
 <p><a href="https://www.vultr.com/docs/how-to-install-rocket-chat-on-centos-7" target="_blank" rel="external">How to Install Rocket.Chat on CentOS 7</a></p>
 
@@ -266,7 +276,7 @@
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuxkzrw30007gwyv2v1m95pz" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuxl1l510005d4yvgkp9pqg7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -434,7 +444,7 @@
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuxkzrvg0001gwyvoboir8ax" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuxl1l4z0004d4yvpsmw2fyl" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -606,7 +616,7 @@
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuxkzrvs0004gwyvdprtwnyc" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/10/" data-id="ciuxl1l4q0001d4yvsfwiezta" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -738,7 +748,7 @@
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/09/" data-id="ciuxkzrva0000gwyv3o110inm" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/09/" data-id="ciuxl1l4k0000d4yvlleeu19a" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -868,7 +878,7 @@
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/07/" data-id="ciuxkzrvv0005gwyvppy0la1w" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/07/" data-id="ciuxl1l5a0007d4yv8nedqkv2" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
