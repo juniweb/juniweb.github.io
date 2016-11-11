@@ -53,6 +53,8 @@
                 
                     <a class="main-nav-link" href="/tags">Tags</a>
                 
+                    <a class="main-nav-link" href="/itdic">ITDic</a>
+                
                     <a class="main-nav-link" href="/about">About</a>
                 
             </nav>
@@ -118,6 +120,8 @@
                 
                     <td><a class="main-nav-link" href="/tags">Tags</a></td>
                 
+                    <td><a class="main-nav-link" href="/itdic">ITDic</a></td>
+                
                     <td><a class="main-nav-link" href="/about">About</a></td>
                 
                 <td>
@@ -147,11 +151,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                7
+                4
                 <span>포스트</span>
             </div>
             <div class="article-info-block">
-                11
+                8
                 <span>태그</span>
             </div>
         </div>
@@ -182,358 +186,6 @@
 
             
             <section id="main">
-    <article id="post-meteor-getstarted" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/11/">meteor 시작하기</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/11/">
-            <time datetime="2016-11-04T08:01:14.000Z" itemprop="datePublished">2016-11-04</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JSFramework/">JSFramework</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/JSFramework/Meteor/">Meteor</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GetStarted/">GetStarted</a>, <a class="tag-link" href="/tags/Meteor/">Meteor</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Meteor-설치"><a href="#Meteor-설치" class="headerlink" title="Meteor 설치"></a>Meteor 설치</h1><p><strong>MAC OSX / LINUX</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl https://install.meteor.com/ | sh</div></pre></td></tr></table></figure></p>
-<p><strong>WINDOWS</strong><br><a href="https://www.meteor.com/install" target="_blank" rel="external">Meteor 홈페이지</a>에서 Installer 파일을 다운로드 하여 설치합니다.</p>
-<h1 id="Meteor-CLI"><a href="#Meteor-CLI" class="headerlink" title="Meteor CLI"></a>Meteor CLI</h1><p><a href="https://docs.meteor.com/commandline.html" target="_blank" rel="external">Meteor Command Line</a></p>
-<h3 id="meteor-create-Project-Name"><a href="#meteor-create-Project-Name" class="headerlink" title="meteor create [Project Name]"></a>meteor create [Project Name]</h3><blockquote>
-<p>Meteor 프로젝트를 생성합니다. </p>
-</blockquote>
-<h3 id="meteor-run-또는-Meteor"><a href="#meteor-run-또는-Meteor" class="headerlink" title="meteor run (또는 Meteor)"></a>meteor run (또는 Meteor)</h3><blockquote>
-<p>Meteor 프로젝트를 실행합니다. </p>
-</blockquote>
-<h3 id="meteor-mongo"><a href="#meteor-mongo" class="headerlink" title="meteor mongo"></a>meteor mongo</h3><blockquote>
-<p>mongodb Shell 을 오픈합니다.</p>
-</blockquote>
-<h1 id="Meteor-디렉토리-구조"><a href="#Meteor-디렉토리-구조" class="headerlink" title="Meteor 디렉토리 구조"></a>Meteor 디렉토리 구조</h1><h3 id="client"><a href="#client" class="headerlink" title="client"></a>client</h3><p><code>client</code> 폴더 파일은 클라이언트 전용 파일로 서버에서 로드되지 않습니다.<br><code>lib</code> 폴더의 Javascript 파일에서 <code>if(Meteor.isClient() {}</code> 블록 내에 작성한 코드와 동일합니다.  </p>
-<h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><p><code>server</code> 폴더 파일은 서버 파일로 클라이언트에서 로드되지 않습니다.<br><code>lib</code> 폴더의 Javascript 파일에서 <code>if(Meteor.isServer() {}</code> 블록 내에 작성한 코드와 동일합니다.</p>
-<h3 id="lib"><a href="#lib" class="headerlink" title="lib"></a>lib</h3><p><code>lib</code> 폴더 파일은 클라이언트/서버 에서 공통으로 사용하는파일로 클라이언트/서버 양쪽 모두에서 로드됩니다.<br><code>if(Meteor.isClient() {}</code>, <code>if(Meteor.isServer() {}</code> 에 의해서 제어할 수 있습니다.<br>js유틸, Collection 정의파일, 공통 Method 등의 파일이 위치한다.</p>
-<h3 id="public"><a href="#public" class="headerlink" title="public"></a>public</h3><p><code>public</code> 폴더 파일은 클라이언트의 정적 리소스 파일이 위치합니다.<br> <code>&lt;img src=&quot;/bg.png&quot; /&gt;</code> 같은 경우, <code>public/bg.png</code> 를 가리킵니다.</p>
-<h3 id="private"><a href="#private" class="headerlink" title="private"></a>private</h3><p><code>private</code> 폴더 파일은 서버에서만 사용되는 리소스 파일이 위치합니다.<br>서버측 코드와 Javascript <a href="http://docs.meteor.com/api/assets.html" target="_blank" rel="external">Assets</a> 에서만 액세스할 수 있습니다.</p>
-<h3 id="client-compatibility"><a href="#client-compatibility" class="headerlink" title="client/compatibility"></a>client/compatibility</h3><p><code>client</code> 폴더 하위의 <code>compatibility</code> 폴더는 Javascript 라이브러리(3rd party) 파일이 위치합니다.<br><code>client</code> 폴더의 Javascript 파일보다 먼저 로드됩니다.</p>
-<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p><code>test</code> 폴더 파일은 테스트를 위한 파일이 위치합니다.</p>
-<h1 id="Meteor-파일-로딩-순서"><a href="#Meteor-파일-로딩-순서" class="headerlink" title="Meteor 파일 로딩 순서"></a>Meteor 파일 로딩 순서</h1><ol>
-<li>HTML 파일이 먼저 로드됩니다.</li>
-<li><code>main.</code>으로 시작되는 파일들은 마지막에 로드됩니다.</li>
-<li><code>lib</code> 디렉토리 파일들이 다음 순서로 로드됩니다. </li>
-<li>깊은 경로의 파일들이 다음 순서로 로드됩니다.</li>
-<li>동일 경로의 파일은 알파벳 순서로 로드됩니다.</li>
-</ol>
-<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><p><a href="https://www.meteor.com/tutorials" target="_blank" rel="external">Meteor tutorials</a></p>
-<blockquote>
-<p>다양한 템플릿엔진(Blaze, AngularJS, React) 의 TODO App 에 대한 CodeLab 을 진행합니다. </p>
-</blockquote>
-<p><a href="https://www.youtube.com/playlist?list=PLLnpHn493BHFYZUSK62aVycgcAouqBt7V" target="_blank" rel="external">Intermediate Meteor(동영상)</a></p>
-<blockquote>
-<p>동영상으로 Meteor Framework 를 설명합니다.</p>
-</blockquote>
-<p><a href="http://meteor-fan.axlight.com/meteor-file-structure/" target="_blank" rel="external">Meteor 파일 디렉토리에 대하여</a></p>
-<blockquote>
-<p>Meteor 의 파일 디렉토리 구조에 대한 설명</p>
-</blockquote>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://juniweb.github.io/2016/11/" data-id="civ3m93zc0009scyv2ruxfhio" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://juniweb.github.io/2016/11/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/11/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-it-dic" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/11/">it-dic</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/11/">
-            <time datetime="2016-11-02T01:14:25.000Z" itemprop="datePublished">2016-11-02</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/기타/">기타</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/기타/IT용어/">IT용어</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/IT용어/">IT용어</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="■-A"><a href="#■-A" class="headerlink" title="■ A"></a>■ A</h1><hr>
-<h1 id="■-B"><a href="#■-B" class="headerlink" title="■ B"></a>■ B</h1><h3 id="Bear-metal"><a href="#Bear-metal" class="headerlink" title="Bear-metal"></a>Bear-metal</h3><blockquote>
-<p>어떤 소프트웨어도 담겨 있지 않은 하드웨어. 다른 관점에서는 “하드웨어만을 구매할 수 있는 제품</p>
-</blockquote>
-<ul>
-<li><a href="http://www.itworld.co.kr/t/62077/vdi/90854" target="_blank" rel="external">Bear-Metl</a></li>
-</ul>
-<hr>
-<h1 id="■-C"><a href="#■-C" class="headerlink" title="■ C"></a>■ C</h1><hr>
-<h1 id="■-D"><a href="#■-D" class="headerlink" title="■ D"></a>■ D</h1><h3 id="Deep-Link"><a href="#Deep-Link" class="headerlink" title="Deep Link"></a>Deep Link</h3><blockquote>
-<p>특정 페이지에 도달할 수 있는 링크</p>
-</blockquote>
-<ul>
-<li><a href="https://deeplink.me/why" target="_blank" rel="external">Why Deeplink</a></li>
-<li><a href="http://verticalplatform.kr/archives/3411" target="_blank" rel="external">Mobile deep linking 기술은 왜 중요한가?</a></li>
-<li><a href="http://blog.ab180.co/deeplinkga-mweojyo/" target="_blank" rel="external">딥링크란 무엇인가요?</a></li>
-</ul>
-<hr>
-<h1 id="■-E"><a href="#■-E" class="headerlink" title="■ E"></a>■ E</h1><hr>
-<h1 id="■-F"><a href="#■-F" class="headerlink" title="■ F"></a>■ F</h1><hr>
-<h1 id="■-G"><a href="#■-G" class="headerlink" title="■ G"></a>■ G</h1><hr>
-<h1 id="■-H"><a href="#■-H" class="headerlink" title="■ H"></a>■ H</h1><hr>
-<h1 id="■-I"><a href="#■-I" class="headerlink" title="■ I"></a>■ I</h1><h3 id="Isomorphic-Programming"><a href="#Isomorphic-Programming" class="headerlink" title="Isomorphic Programming"></a>Isomorphic Programming</h3><blockquote>
-<p>Client 와 Server 에서 하나의 언어, 동일한 구조의 개발</p>
-</blockquote>
-<ul>
-<li><a href="http://java.ihoney.pe.kr/391" target="_blank" rel="external">ISOMORPHIC - ① 동형의 ② 같은 모양의</a></li>
-<li><a href="http://lainfox.github.io/dev/2015/11/09/Think%20of%20Isomorphic-and-Universal-javascript/" target="_blank" rel="external">Isomorphic과 Universal javascript에 대한 단상</a></li>
-</ul>
-<h3 id="i18n"><a href="#i18n" class="headerlink" title="i18n"></a>i18n</h3><blockquote>
-<p>국제화. internationalization. 영어 표기에서 첫 글자인 “I”자와 마지막 글자인 “N”의 사이에 18글자가 들어가 있다는 의미. </p>
-</blockquote>
-<ul>
-<li><a href="http://www.terms.co.kr/internationalization.htm" target="_blank" rel="external">internationalization (“I18N”) ; 국제화</a></li>
-</ul>
-<hr>
-<h1 id="■-J"><a href="#■-J" class="headerlink" title="■ J"></a>■ J</h1><hr>
-<h1 id="■-K"><a href="#■-K" class="headerlink" title="■ K"></a>■ K</h1><hr>
-<h1 id="■-L"><a href="#■-L" class="headerlink" title="■ L"></a>■ L</h1><hr>
-<h1 id="■-M"><a href="#■-M" class="headerlink" title="■ M"></a>■ M</h1><hr>
-<h1 id="■-N"><a href="#■-N" class="headerlink" title="■ N"></a>■ N</h1><hr>
-<h1 id="■-O"><a href="#■-O" class="headerlink" title="■ O"></a>■ O</h1><hr>
-<h1 id="■-P"><a href="#■-P" class="headerlink" title="■ P"></a>■ P</h1><hr>
-<h1 id="■-Q"><a href="#■-Q" class="headerlink" title="■ Q"></a>■ Q</h1><hr>
-<h1 id="■-R"><a href="#■-R" class="headerlink" title="■ R"></a>■ R</h1><hr>
-<h1 id="■-S"><a href="#■-S" class="headerlink" title="■ S"></a>■ S</h1><hr>
-<h1 id="■-T"><a href="#■-T" class="headerlink" title="■ T"></a>■ T</h1><hr>
-<h1 id="■-U"><a href="#■-U" class="headerlink" title="■ U"></a>■ U</h1><hr>
-<h1 id="■-V"><a href="#■-V" class="headerlink" title="■ V"></a>■ V</h1><hr>
-<h1 id="■-W"><a href="#■-W" class="headerlink" title="■ W"></a>■ W</h1><hr>
-<h1 id="■-X"><a href="#■-X" class="headerlink" title="■ X"></a>■ X</h1><hr>
-<h1 id="■-Y"><a href="#■-Y" class="headerlink" title="■ Y"></a>■ Y</h1><hr>
-<h1 id="■-Z"><a href="#■-Z" class="headerlink" title="■ Z"></a>■ Z</h1>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://juniweb.github.io/2016/11/" data-id="civ3m93z60007scyv1gqo911e" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://juniweb.github.io/2016/11/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/11/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-rocketchat-install-centos" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -543,7 +195,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/">RocketChat 설치(CentOS)</a>
+            <a class="article-title" href="/2016/10/28/rocketchat-install-centos/">RocketChat 설치(CentOS)</a>
         </h1>
     
 
@@ -552,7 +204,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/10/">
+        <a href="/2016/10/28/rocketchat-install-centos/">
             <time datetime="2016-10-28T07:55:01.000Z" itemprop="datePublished">2016-10-28</time>
         </a>
     </div>
@@ -634,7 +286,7 @@
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/10/" data-id="civ3m93yy0005scyvbiivz5qz" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/10/28/rocketchat-install-centos/" data-id="civdmhzdn0007agyvmstp6c05" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -702,7 +354,7 @@
 
             
     
-        <a href="http://juniweb.github.io/2016/10/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/10/">댓글</a>
+        <a href="http://juniweb.github.io/2016/10/28/rocketchat-install-centos/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/10/28/rocketchat-install-centos/">댓글</a>
     
 
         </footer>
@@ -721,7 +373,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/">Azure CentOS7 가상컴퓨터 생성</a>
+            <a class="article-title" href="/2016/10/28/azure-centos7-create/">Azure CentOS7 가상컴퓨터 생성</a>
         </h1>
     
 
@@ -730,7 +382,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/10/">
+        <a href="/2016/10/28/azure-centos7-create/">
             <time datetime="2016-10-28T05:38:52.000Z" itemprop="datePublished">2016-10-28</time>
         </a>
     </div>
@@ -802,7 +454,7 @@
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/10/" data-id="civ3m93yv0004scyv4lnlh0v7" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/10/28/azure-centos7-create/" data-id="civdmhzhd0017agyvb5dpu5zx" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -870,7 +522,7 @@
 
             
     
-        <a href="http://juniweb.github.io/2016/10/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/10/">댓글</a>
+        <a href="http://juniweb.github.io/2016/10/28/azure-centos7-create/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/10/28/azure-centos7-create/">댓글</a>
     
 
         </footer>
@@ -889,7 +541,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/10/">Atom Editor Packages</a>
+            <a class="article-title" href="/2016/10/27/atom-packages/">Atom Editor Packages</a>
         </h1>
     
 
@@ -898,7 +550,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/10/">
+        <a href="/2016/10/27/atom-packages/">
             <time datetime="2016-10-27T00:26:42.000Z" itemprop="datePublished">2016-10-27</time>
         </a>
     </div>
@@ -974,7 +626,7 @@
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/10/" data-id="civ3m93yj0001scyvgn6mnzy8" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/10/27/atom-packages/" data-id="civdmhzka001hagyvarr9fy4m" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1042,7 +694,7 @@
 
             
     
-        <a href="http://juniweb.github.io/2016/10/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/10/">댓글</a>
+        <a href="http://juniweb.github.io/2016/10/27/atom-packages/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/10/27/atom-packages/">댓글</a>
     
 
         </footer>
@@ -1061,7 +713,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/09/">hexo</a>
+            <a class="article-title" href="/2016/09/24/hexo/">hexo</a>
         </h1>
     
 
@@ -1070,7 +722,7 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/09/">
+        <a href="/2016/09/24/hexo/">
             <time datetime="2016-09-24T05:28:16.000Z" itemprop="datePublished">2016-09-24</time>
         </a>
     </div>
@@ -1095,7 +747,12 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h3 id="Hexo-블로그-참조"><a href="#Hexo-블로그-참조" class="headerlink" title="Hexo 블로그 참조"></a>Hexo 블로그 참조</h3><p><a href="http://futurecreator.github.io/categories/Web/Hexo/" target="_blank" rel="external">Eric Han’s IT Blog using Hexo</a></p>
+            <h3 id="Hexo-Korea"><a href="#Hexo-Korea" class="headerlink" title="Hexo Korea"></a>Hexo Korea</h3><p><a href="https://hexo.io/ko/" target="_blank" rel="external">Hexo</a></p>
+<h3 id="Hexo-블로그-참조"><a href="#Hexo-블로그-참조" class="headerlink" title="Hexo 블로그 참조"></a>Hexo 블로그 참조</h3><p><a href="http://futurecreator.github.io/categories/Web/Hexo/" target="_blank" rel="external">Eric Han’s IT Blog using Hexo</a></p>
+<h3 id="Hexo-메뉴-설정"><a href="#Hexo-메뉴-설정" class="headerlink" title="Hexo 메뉴 설정"></a>Hexo 메뉴 설정</h3><p><a href="https://github.com/ppoffice/hexo-theme-icarus/wiki/Theme" target="_blank" rel="external">Theme 메뉴 설정</a></p>
+<blockquote>
+<p>Theme 폴더의 <code>_source/categories</code> 와 <code>_source/tags</code> 폴더를 source 폴더에 <strong>Copy</strong> </p>
+</blockquote>
 
         
         </div>
@@ -1106,7 +763,7 @@
 
 </div>
 
-    <a data-url="http://juniweb.github.io/2016/09/" data-id="civ3m93yc0000scyvu7dm6bgr" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://juniweb.github.io/2016/09/24/hexo/" data-id="civdmhzdl0005agyvwdhsvoza" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1174,137 +831,7 @@
 
             
     
-        <a href="http://juniweb.github.io/2016/09/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/09/">댓글</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/">Hello World</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/">
-            <time datetime="2016-07-12T08:38:53.179Z" itemprop="datePublished">2016-07-12</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                    </div>
-                
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://juniweb.github.io/2016/07/" data-id="civ3m93zg000ascyvvtw1voxu" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://juniweb.github.io/2016/07/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/07/">댓글</a>
+        <a href="http://juniweb.github.io/2016/09/24/hexo/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://juniweb.github.io/2016/09/24/hexo/">댓글</a>
     
 
         </footer>
@@ -1326,45 +853,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/11/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JSFramework/">JSFramework</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/JSFramework/Meteor/">Meteor</a></p>
-                            <p class="item-title"><a href="/2016/11/" class="title">meteor 시작하기</a></p>
-                            <p class="item-date"><time datetime="2016-11-04T08:01:14.000Z" itemprop="datePublished">2016-11-04</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/11/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/기타/">기타</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/기타/IT용어/">IT용어</a></p>
-                            <p class="item-title"><a href="/2016/11/" class="title">it-dic</a></p>
-                            <p class="item-date"><time datetime="2016-11-02T01:14:25.000Z" itemprop="datePublished">2016-11-02</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/10/" class="thumbnail">
+                            <a href="/2016/10/28/rocketchat-install-centos/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -1375,7 +864,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/OpenSource/">OpenSource</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/OpenSource/RocketChat/">RocketChat</a></p>
-                            <p class="item-title"><a href="/2016/10/" class="title">RocketChat 설치(CentOS)</a></p>
+                            <p class="item-title"><a href="/2016/10/28/rocketchat-install-centos/" class="title">RocketChat 설치(CentOS)</a></p>
                             <p class="item-date"><time datetime="2016-10-28T07:55:01.000Z" itemprop="datePublished">2016-10-28</time></p>
                         </div>
                     </li>
@@ -1383,7 +872,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/10/" class="thumbnail">
+                            <a href="/2016/10/28/azure-centos7-create/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -1394,7 +883,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Cloud/">Cloud</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Cloud/Azure/">Azure</a></p>
-                            <p class="item-title"><a href="/2016/10/" class="title">Azure CentOS7 가상컴퓨터 생성</a></p>
+                            <p class="item-title"><a href="/2016/10/28/azure-centos7-create/" class="title">Azure CentOS7 가상컴퓨터 생성</a></p>
                             <p class="item-date"><time datetime="2016-10-28T05:38:52.000Z" itemprop="datePublished">2016-10-28</time></p>
                         </div>
                     </li>
@@ -1402,7 +891,7 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/10/" class="thumbnail">
+                            <a href="/2016/10/27/atom-packages/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -1413,8 +902,27 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/기타/">기타</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/기타/editor/">editor</a></p>
-                            <p class="item-title"><a href="/2016/10/" class="title">Atom Editor Packages</a></p>
+                            <p class="item-title"><a href="/2016/10/27/atom-packages/" class="title">Atom Editor Packages</a></p>
                             <p class="item-date"><time datetime="2016-10-27T00:26:42.000Z" itemprop="datePublished">2016-10-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/24/hexo/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/기타/">기타</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/기타/Hexo/">Hexo</a></p>
+                            <p class="item-title"><a href="/2016/09/24/hexo/" class="title">hexo</a></p>
+                            <p class="item-date"><time datetime="2016-09-24T05:28:16.000Z" itemprop="datePublished">2016-09-24</time></p>
                         </div>
                     </li>
                 
@@ -1427,7 +935,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/">Cloud</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/Azure/">Azure</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JSFramework/">JSFramework</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JSFramework/Meteor/">Meteor</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenSource/">OpenSource</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/OpenSource/RocketChat/">RocketChat</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/">기타</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/기타/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/IT용어/">IT용어</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/editor/">editor</a><span class="category-list-count">1</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/">Cloud</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Cloud/Azure/">Azure</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenSource/">OpenSource</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/OpenSource/RocketChat/">RocketChat</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/">기타</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/기타/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/기타/editor/">editor</a><span class="category-list-count">1</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -1436,7 +944,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">11월 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">10월 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">9월 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">7월 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">10월 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">9월 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1445,7 +953,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">태그</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GetStarted/">GetStarted</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IT용어/">IT용어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Install/">Install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meteor/">Meteor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketChat/">RocketChat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/azure/">azure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package/">package</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Install/">Install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketChat/">RocketChat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/atom/">atom</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/azure/">azure</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/">centos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/package/">package</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1454,7 +962,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">태그 클라우드</h3>
         <div class="widget tagcloud">
-            <a href="/tags/GetStarted/" style="font-size: 10px;">GetStarted</a> <a href="/tags/IT용어/" style="font-size: 10px;">IT용어</a> <a href="/tags/Install/" style="font-size: 10px;">Install</a> <a href="/tags/Meteor/" style="font-size: 10px;">Meteor</a> <a href="/tags/RocketChat/" style="font-size: 10px;">RocketChat</a> <a href="/tags/atom/" style="font-size: 10px;">atom</a> <a href="/tags/azure/" style="font-size: 10px;">azure</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/package/" style="font-size: 10px;">package</a>
+            <a href="/tags/Install/" style="font-size: 10px;">Install</a> <a href="/tags/RocketChat/" style="font-size: 10px;">RocketChat</a> <a href="/tags/atom/" style="font-size: 10px;">atom</a> <a href="/tags/azure/" style="font-size: 10px;">azure</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/package/" style="font-size: 10px;">package</a>
         </div>
     </div>
 
