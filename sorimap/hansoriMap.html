@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>한소리인 Map</title>
+    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="map" style="width: 1000px; height: 800px;"></div>
+      <script type="text/javascript">
+
+        var locationsList = [
+          {
+            type      : '집',
+            name      : '임희준(91) / 전미영(95)',
+            address   : '경기도 고양시 덕양구 화정동',
+            position  : {lat: 37.6309566, lng: 126.8262776}
+          },
+          {
+            type      : '회사',
+            name      : '임희준(91)',
+            address   : '서울시 마포구 상암동 누리꿈스퀘어',
+            position  : {lat: 37.5797261, lng: 126.8880113}
+          },
+          {
+            type      : '집',
+            name      : '정은숙(96)',
+            address   : '서울시 중랑구 봉화산로56길',
+            position  : {lat: 37.6036395, lng: 127.0945677}
+          },
+          {
+            type      : '회사',
+            name      : '정은숙(96)',
+            address   : '서울시 노원구 공릉동',
+            position  : {lat: 37.630686, lng: 127.0707852}
+          },
+          {
+            type      : '집',
+            name      : '이무양(88)',
+            address   : '서울시 마포구 성산동',
+            position  : {lat: 37.5617832, lng: 126.9064454}
+          },
+          {
+            type      : '집',
+            name      : '이종수(95)',
+            address   : '서울시 영등포구 당산로42길',
+            position  : {lat: 37.5617832, lng: 126.9064454}
+          },
+          {
+            type      : '회사',
+            name      : '이종수(95)',
+            address   : '경기도 성남시 수정구 복정로76',
+            position  : {lat: 37.459213, lng: 127.1259512}
+          },
+          {
+            type      : '집',
+            name      : '조대연(90)',
+            address   : '경기도 고양시 덕양구 소원로181번길',
+            position  : {lat: 37.6137087, lng: 126.84037}
+          },
+          {
+            type      : '회사',
+            name      : '조대연(90)',
+            address   : '경기도 용인시 기흥구 흥턱1로13',
+            position  : {lat: 37.2707674, lng: 127.0648379}
+          },
+          {
+            type      : '집',
+            name      : '유혜승(96)',
+            address   : '경기도 광명시 철산1동',
+            position  : {lat: 37.4907088, lng: 126.8647383}
+          },
+          {
+            type      : '회사',
+            name      : '유혜승(96)',
+            address   : '서울시 영등포구 문래동',
+            position  : {lat: 37.5157819, lng: 126.8828756}
+          },
+          {
+            type      : '집',
+            name      : '백진영(93)',
+            address   : '경기도 하남시 덕풍동',
+            position  : {lat: 37.5329873, lng: 127.1970658}
+          },
+          {
+            type      : '회사',
+            name      : '백진영(93)',
+            address   : '서울시 강동구 천호동',
+            position  : {lat: 37.5431358, lng: 127.1178855}
+          },
+          {
+            type      : '집',
+            name      : '차상원(87)',
+            address   : '서울시 강남구 압구정로 151',
+            position  : {lat: 37.5431358, lng: 127.1178855}
+          },
+          {
+            type      : '회사',
+            name      : '차상원(87)',
+            address   : '서울시 영등포구 여의도동  전경련빌딩',
+            position  : {lat: 37.5221085, lng: 126.917342}
+          },
+        ];
+
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: new google.maps.LatLng(37, 127.1),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+
+        for (i = 0; i < locationsList.length; i++) {
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locationsList[i].position.lat, locationsList[i].position.lng),
+            map: map
+          });
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              var _content;
+
+              _content = '[' +  locationsList[i].type + '] ' + locationsList[i].name;
+              _content += '<br>' +  locationsList[i].address;
+
+              infowindow.setContent(_content);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+        }
+
+
+        // var locations = [
+        //   ['<h3>[집] 임희준(91)</h3></br>경기도 고양시 덕양구 화정동', 37.6309566,126.8262776],
+        //   ['[회사] 임희준(91)', 37.5797261,126.8880113]
+        // ];
+        // var map = new google.maps.Map(document.getElementById('map'), {
+        //   zoom: 8,
+        //   center: new google.maps.LatLng(37, 127.1),
+        //   mapTypeId: google.maps.MapTypeId.ROADMAP
+        // });
+        // var infowindow = new google.maps.InfoWindow();
+        // var marker, i;
+        //
+        // for (i = 0; i < locations.length; i++) {
+        //   marker = new google.maps.Marker({
+        //     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        //     map: map
+        //   });
+        //   google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        //     return function() {
+        //       infowindow.setContent(locations[i][0]);
+        //       infowindow.open(map, marker);
+        //     }
+        //   })(marker, i));
+        // }
+      </script>
+  </body>
+</html>
